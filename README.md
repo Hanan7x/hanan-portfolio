@@ -3,7 +3,7 @@ Coding Portfolio
 Live link: https://hanan7x.github.io/hanan-portfolio/
 ## What it is
 
-A single-page personal portfolio site built for a school assignment. It introduces me, gives a short "About Me," lists a few academic and extracurricular achievements, and provides a way to get in touch through email and social links.
+A single-page personal portfolio site. It introduces me, gives a short "About Me," lists a few academic and extracurricular achievements, and provides a way to get in touch through email and social links.
 
 ## How I built it
 
