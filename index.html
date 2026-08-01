@@ -4,15 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hanan Asif — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1f2430;
-    --paper: #faf7f2;
-    --paper-alt: #f0ebe1;
-    --accent: #3d5a80;
-    --accent-soft: #98c1d9;
-    --line: #d8cfc0;
+    /* Color palette */
+    --color-ink: #1f2430;
+    --color-paper: #faf7f2;
+    --color-paper-alt: #f0ebe1;
+    --color-accent: #3d5a80;
+    --color-accent-dark: #2a3f5f;
+    --color-accent-soft: #98c1d9;
+    --color-line: #d8cfc0;
+    --color-muted: #555555;
+    --color-white: #ffffff;
+
+    /* Typography */
+    --font-display: "Poppins", "Segoe UI", Arial, sans-serif;
+    --font-body: "Inter", "Segoe UI", Arial, sans-serif;
+
+    /* Layout */
     --max-width: 780px;
+
+    /* Motion */
+    --fade-duration: 0.7s;
+    --fade-easing: ease-out;
   }
 
   * { box-sizing: border-box; }
@@ -21,20 +38,24 @@
 
   body {
     margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Segoe UI", Georgia, "Times New Roman", serif;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
     line-height: 1.65;
     font-size: 1.05rem;
   }
 
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+
   a {
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   a:focus-visible,
   button:focus-visible {
-    outline: 3px solid var(--accent);
+    outline: 3px solid var(--color-accent);
     outline-offset: 3px;
   }
 
@@ -42,8 +63,8 @@
     position: absolute;
     left: -999px;
     top: 0;
-    background: var(--accent);
-    color: #fff;
+    background: var(--color-accent);
+    color: var(--color-white);
     padding: 0.6rem 1rem;
     z-index: 100;
     border-radius: 0 0 6px 0;
@@ -53,12 +74,45 @@
     left: 0;
   }
 
+  /* Fade-in on load */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  header.site-header,
+  nav.site-nav,
+  main section,
+  footer.site-footer {
+    animation: fade-in-up var(--fade-duration) var(--fade-easing) both;
+  }
+
+  nav.site-nav { animation-delay: 0.1s; }
+  main section:nth-of-type(1) { animation-delay: 0.2s; }
+  main section:nth-of-type(2) { animation-delay: 0.35s; }
+  footer.site-footer { animation-delay: 0.5s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    header.site-header,
+    nav.site-nav,
+    main section,
+    footer.site-footer {
+      animation: none;
+    }
+  }
+
   header.site-header {
-    background: linear-gradient(135deg, var(--accent) 0%, #2a3f5f 100%);
-    color: #fff;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    color: var(--color-white);
     padding: 3.5rem 1.5rem 3rem;
     text-align: center;
-    border-bottom: 6px solid var(--accent-soft);
+    border-bottom: 6px solid var(--color-accent-soft);
   }
 
   header.site-header h1 {
@@ -70,13 +124,14 @@
   header.site-header p {
     margin: 0.75rem 0 0;
     font-size: clamp(1rem, 3vw, 1.25rem);
-    color: var(--accent-soft);
+    color: var(--color-accent-soft);
     font-style: italic;
+    font-family: var(--font-body);
   }
 
   nav.site-nav {
-    background: var(--paper-alt);
-    border-bottom: 1px solid var(--line);
+    background: var(--color-paper-alt);
+    border-bottom: 1px solid var(--color-line);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -95,13 +150,14 @@
   nav.site-nav a {
     text-decoration: none;
     font-weight: 600;
-    color: var(--ink);
+    color: var(--color-ink);
     padding: 0.25rem 0.4rem;
+    font-family: var(--font-body);
   }
 
   nav.site-nav a:hover,
   nav.site-nav a:focus-visible {
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   main {
@@ -112,7 +168,7 @@
 
   section {
     padding: 3rem 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--color-line);
   }
 
   section:last-of-type {
@@ -122,7 +178,7 @@
   section h2 {
     font-size: 1.6rem;
     margin-top: 0;
-    color: var(--accent);
+    color: var(--color-accent);
     position: relative;
     padding-bottom: 0.5rem;
   }
@@ -132,7 +188,7 @@
     display: block;
     width: 48px;
     height: 3px;
-    background: var(--accent-soft);
+    background: var(--color-accent-soft);
     margin-top: 0.4rem;
   }
 
@@ -145,8 +201,8 @@
   }
 
   .project-list li {
-    background: var(--paper-alt);
-    border: 1px solid var(--line);
+    background: var(--color-paper-alt);
+    border: 1px solid var(--color-line);
     border-radius: 8px;
     padding: 1.25rem 1.5rem;
   }
@@ -154,7 +210,7 @@
   .project-list h3 {
     margin: 0 0 0.5rem;
     font-size: 1.15rem;
-    color: var(--ink);
+    color: var(--color-ink);
   }
 
   .project-list p {
@@ -162,14 +218,14 @@
   }
 
   footer.site-footer {
-    background: var(--paper-alt);
-    border-top: 1px solid var(--line);
+    background: var(--color-paper-alt);
+    border-top: 1px solid var(--color-line);
     padding: 2.5rem 1.5rem;
     text-align: center;
   }
 
   footer.site-footer h2 {
-    color: var(--accent);
+    color: var(--color-accent);
     font-size: 1.4rem;
     margin-top: 0;
   }
@@ -188,17 +244,19 @@
     font-weight: 600;
     text-decoration: none;
     border-bottom: 2px solid transparent;
+    font-family: var(--font-body);
   }
 
   .contact-links a:hover,
   .contact-links a:focus-visible {
-    border-bottom-color: var(--accent);
+    border-bottom-color: var(--color-accent);
   }
 
   .footer-note {
     margin-top: 2rem;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--color-muted);
+    font-family: var(--font-body);
   }
 
   @media (max-width: 480px) {
